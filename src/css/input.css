@@ -6,4 +6,16 @@
   * {
     font-family: "Mona Sans", sans-serif;
   }
+
+  #particles-js {
+    background: #0e1947;
+    height: 114vh;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  #particles-js {
+    background: #0e1947;
+    height: 200vh;
+  }
 }

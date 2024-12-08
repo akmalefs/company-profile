@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lumina - Landing Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,20 +15,31 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="dist/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <header class="bg-primary">
+    <div id="particles-js" class="absolute inset-0 z-0"></div>
+    <div class="relative z-10 min-h-screen">
       <!-- Navbar -->
-      <nav class="max-w-6xl mx-auto py-9">
+      <nav
+        class="max-w-6xl mx-auto md:py-6 p-5 relative bg-gray-900 md:bg-transparent"
+      >
         <div class="flex items-center justify-between">
-          <img
-            src="dist/images/logo.png"
-            alt="logo"
-            class="w-[178px] h-[30px]"
-          />
+          <!-- Logo -->
+          <img src="dist/images/logo.png" alt="logo" class="w-[150px] h-auto" />
 
-          <ul class="flex items-center gap-x-10">
+          <!-- Hamburger Menu (Mobile) -->
+          <button
+            id="menu-toggle"
+            class="block md:hidden text-white text-3xl focus:outline-none"
+          >
+            &#9776;
+            <!-- Unicode for Hamburger Menu -->
+          </button>
+
+          <!-- Navigation Links (Desktop) -->
+          <ul id="menu" class="hidden md:flex items-center gap-x-8">
             <li>
               <a
                 href="#"
@@ -60,27 +75,78 @@
                 >Contact</a
               >
             </li>
-            <li>
-              <a
-                href="#"
-                class="text-white text-lg font-medium bg-secondary-500 px-5 py-3 rounded-lg"
-                >Book an Appoitment</a
-              >
-            </li>
           </ul>
+
+          <!-- CTA Button (Desktop) -->
+          <a
+            href="#"
+            class="hidden md:inline-block text-white text-sm font-medium bg-secondary-500 px-4 py-2 rounded-lg shadow-md hover:bg-secondary-600 transition-all duration-150"
+            >Book Appointment</a
+          >
         </div>
+
+        <!-- Mobile Menu -->
+        <ul
+          id="mobile-menu"
+          class="hidden flex-col bg-white absolute top-full left-0 w-full shadow-lg z-50 space-y-4 py-6 px-6 md:hidden"
+        >
+          <li>
+            <a
+              href="#"
+              class="block text-gray-900 hover:text-secondary-500 transition-all duration-150 text-lg"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block text-gray-900 hover:text-secondary-500 transition-all duration-150 text-lg"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block text-gray-900 hover:text-secondary-500 transition-all duration-150 text-lg"
+              >Service</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block text-gray-900 hover:text-secondary-500 transition-all duration-150 text-lg"
+              >Blog</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block text-gray-900 hover:text-secondary-500 transition-all duration-150 text-lg"
+              >Contact</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block text-center text-white font-medium bg-secondary-500 px-4 py-2 rounded-lg shadow-md hover:bg-secondary-600 transition-all duration-150"
+              >Book Appointment</a
+            >
+          </li>
+        </ul>
       </nav>
+
       <!-- Navbar -->
 
-      <!-- HERO -->
-      <section class="max-w-6xl mx-auto mt-20">
-        <div class="flex items-center">
-          <div class="flex flex-col gap-y-12">
-            <header class="flex flex-col gap-y-8">
-              <h1 class="text-6xl font-bold leading-snug text-white">
+      <section class="max-w-6xl mx-auto p-5 mt-20">
+        <div class="flex items-center mb-24">
+          <div class="flex flex-col items-center gap-y-12">
+            <header class="flex flex-col gap-y-8 items-center">
+              <h1
+                class="md:text-6xl text-4xl font-bold leading-snug text-center md:w-2/3 text-white"
+              >
                 Masterminds to Your Positive Goal
               </h1>
-              <p class="text-lg text-silver">
+              <p class="text-lg text-silver text-center md:w-2/3">
                 Experience a rise in your pursuits with our expert consulting.
                 We excel in tailoring success strategies to your unique goals,
                 covering diverse fields for maximum impact, professionally and
@@ -88,38 +154,40 @@
               </p>
             </header>
 
-            <div class="flex items-center gap-x-8">
+            <div class="flex md:flex-row flex-col gap-y-8 items-center gap-x-8">
               <a
                 href="#"
-                class="px-5 py-3 text-white bg-secondary-500 rounded-lg font-medium text-lg"
+                class="px-5 py-3 text-white bg-secondary-500 md:w-fit w-full rounded-lg font-medium text-lg"
                 >Collaborate with Us</a
               >
               <a
                 href="#"
-                class="px-5 py-3 text-secondary-500 border border-secondary-500 rounded-lg font-medium text-lg"
+                class="px-5 py-3 text-secondary-500 md:w-fit w-full text-center border border-secondary-500 rounded-lg font-medium text-lg"
                 >Learn More</a
               >
             </div>
 
-            <hr class="bg-secondary-500 h-1 rounded-full" />
+            <!-- <hr class="bg-secondary-500 h-1 rounded-full" /> -->
           </div>
-          <img
+          <!-- <img
             src="dist/images/hero-image.png"
             alt="hero image human meeting"
             class="w-[600px] h-[484px]"
-          />
+          /> -->
         </div>
 
         <!-- Hero Testimonial -->
-        <div class="flex items-center mt-12 pb-10">
-          <div class="flex flex-col gap-y-5">
+        <div
+          class="flex md:flex-row flex-col gap-y-10 items-center mt-12 pb-10"
+        >
+          <div class="flex flex-col gap-y-5 md:items-start items-center">
             <h4 class="text-white text-4xl font-bold">This is Our result</h4>
-            <p class="text-silver text-lg w-3/4">
+            <p class="text-silver md:text-start text-center text-lg w-3/4">
               How capable we are at work shines through in every endeavor.
             </p>
           </div>
 
-          <ul class="flex items-center gap-x-8">
+          <ul class="flex md:flex-row flex-col gap-y-10 items-center gap-x-8">
             <li class="flex flex-col items-center gap-y-2">
               <h3 class="text-6xl text-white font-bold">160</h3>
               <p class="text-lg text-silver">Client Project</p>
@@ -140,15 +208,15 @@
         </div>
         <!-- Hero Testimonial -->
       </section>
-      <!-- HERO -->
-    </header>
+    </div>
+
     <!-- HEADER -->
 
     <!-- FEATURES -->
-    <section class="max-w-6xl mx-auto mt-32 relative">
-      <header class="flex flex-col gap-y-5 mb-16">
+    <section class="max-w-6xl mx-auto md:p-0 p-5 mt-32 relative">
+      <header class="flex flex-col md:items-start items-center gap-y-5 mb-16">
         <h1 class="text-black text-4xl font-bold">What We Can Offer You</h1>
-        <p class="text-gray text-lg w-3/6">
+        <p class="text-gray text-lg md:w-3/6 md:text-start text-center w-4/6">
           Optimize your journey with our consulting services, delivering
           personalized solutions for success.
         </p>
@@ -162,7 +230,7 @@
 
       <div class="flex flex-col gap-y-16">
         <div
-          class="flex md:flex-row flex-col md:gap-y-0 gap-y-8 items-center gap-x-10"
+          class="flex md:flex-row flex-col md:gap-y-0 gap-y-14 items-center gap-x-10"
         >
           <!-- START: CARD 1 -->
           <div class="flex flex-col items-center gap-y-8">
@@ -174,7 +242,7 @@
 
             <header class="flex flex-col items-center gap-y-5">
               <h1 class="text-black text-xl font-bold">Method Development</h1>
-              <p class="text-gray text-center text-lg md:w-5/6">
+              <p class="text-gray text-center text-lg md:w-5/6 w-7/12">
                 Strategic method development for business excellence and
                 progress.
               </p>
@@ -192,7 +260,7 @@
 
             <header class="flex flex-col items-center gap-y-5">
               <h1 class="text-black text-xl font-bold">Quality Assurance</h1>
-              <p class="text-gray text-center text-lg">
+              <p class="text-gray text-center text-lg w-7/12">
                 Quality excellence for optimal and sustainable business
                 operation.
               </p>
@@ -210,7 +278,7 @@
 
             <header class="flex flex-col items-center gap-y-5">
               <h1 class="text-black text-xl font-bold">Human Resources</h1>
-              <p class="text-gray text-center text-lg">
+              <p class="text-gray text-center text-lg w-7/12">
                 Optimize human resources for sustainable business growth.
               </p>
             </header>
@@ -219,7 +287,7 @@
         </div>
 
         <div
-          class="flex md:flex-row flex-col md:gap-y-0 gap-y-8 items-center gap-x-10"
+          class="flex md:flex-row flex-col md:gap-y-0 gap-y-10 items-center gap-x-10"
         >
           <!-- START : CARD 4 -->
           <div class="flex flex-col items-center gap-y-8">
@@ -231,7 +299,7 @@
 
             <header class="flex flex-col items-center gap-y-5">
               <h1 class="text-black text-xl font-bold">Policy Compliance</h1>
-              <p class="text-gray text-center text-lg md:w-5/6">
+              <p class="text-gray text-center text-lg md:w-5/6 w-7/12">
                 Strategic policy compliance for seamless business operations.
               </p>
             </header>
@@ -248,7 +316,7 @@
 
             <header class="flex flex-col items-center gap-y-5">
               <h1 class="text-black text-xl font-bold">Business Strategies</h1>
-              <p class="text-gray text-center text-lg">
+              <p class="text-gray text-center text-lg w-7/12">
                 Unlocking growth potential using dynamic business strategies.
               </p>
             </header>
@@ -265,7 +333,7 @@
 
             <header class="flex flex-col items-center gap-y-5">
               <h1 class="text-black text-xl font-bold">Management System</h1>
-              <p class="text-gray text-center text-lg md:w-5/6">
+              <p class="text-gray text-center text-lg md:w-5/6 w-7/12">
                 Maximize productivity with our advanced management structure.
               </p>
             </header>
@@ -277,7 +345,7 @@
     <!-- FEATURES -->
 
     <!-- START : ABOUT -->
-    <section class="bg-primary mt-24 pb-10">
+    <section class="bg-primary mt-24 md:p-0 p-10 pb-10">
       <div class="max-w-6xl mx-auto">
         <div class="flex items-center justify-between">
           <header class="flex flex-col gap-y-8">
@@ -304,7 +372,7 @@
           <img
             src="dist/images/about-image.png"
             alt="about image, people"
-            class="w-[632px] h-[546px]"
+            class="w-[632px] h-[546px] md:block hidden"
           />
         </div>
       </div>
@@ -312,13 +380,15 @@
     <!-- END : ABOUT -->
 
     <!-- START : PROSES -->
-    <section class="max-w-6xl mx-auto mt-24 relative">
-      <div class="flex items-center justify-between">
-        <header class="flex flex-col gap-y-5">
+    <section class="max-w-6xl mx-auto mt-24 md:p-0 p-10 relative">
+      <div
+        class="flex md:flex-row flex-col gap-y-10 items-center justify-between"
+      >
+        <header class="flex flex-col md:items-start items-center gap-y-5">
           <h1 class="text-black text-4xl font-bold">
             Our Work is For Your Success
           </h1>
-          <p class="text-gray text-lg w-3/5">
+          <p class="text-gray text-lg md:w-3/5 md:text-start text-center w-4/6">
             Tailored systematic solutions for your goals, ensuring comprehensive
             support and an effective path to success and objectives.
           </p>
@@ -326,7 +396,7 @@
 
         <a
           href="#"
-          class="bg-secondary-500 text-white text-center font-medium px-5 py-3 rounded-lg w-fit"
+          class="bg-secondary-500 text-white text-center font-medium px-5 py-3 rounded-lg md:w-fit w-full"
           >Book a Appoitment</a
         >
       </div>
@@ -334,7 +404,7 @@
       <img
         src="dist/images/ornamen-2.png"
         alt="ornamen"
-        class="absolute top-[-70px] right-0 w-[450px] h-[58px]"
+        class="absolute md:block hidden top-[-70px] right-0 w-[450px] h-[58px]"
       />
 
       <div
@@ -407,24 +477,24 @@
     <!-- END : PROSES -->
 
     <!--  START : VALUE -->
-    <section class="bg-primary mt-24 pb-14">
+    <section class="bg-primary mt-24 md:p-0 p-10 pb-14">
       <div class="max-w-6xl mx-auto">
         <div class="flex items-center">
           <div class="flex flex-col gap-y-12">
-            <header class="flex flex-col gap-y-5">
+            <header class="flex flex-col md:items-start items-center gap-y-5">
               <h1 class="text-4xl text-white font-bold">
                 Benefits of Teaming Up with Us
               </h1>
-              <p class="text-md text-silver w-10/12">
+              <p class="text-md text-silver w-10/12 md:text-start text-center">
                 Embark on a transformative journey with us, where tailored
                 solutions and dedicated support redefine collaborative success.
               </p>
             </header>
 
-            <div class="flex flex-col gap-y-5">
+            <div class="flex flex-col md:items-start items-center gap-y-5">
               <!-- START : CARD 1 -->
               <div
-                class="flex gap-x-6 items-center bg-white px-5 py-4 w-11/12 rounded-tr-full rounded-br-full"
+                class="flex gap-x-6 items-center bg-white px-5 py-4 w-11/12 md:rounded-tr-full md:rounded-br-full md:rounded-tl-none md:rounded-bl-none rounded-full"
               >
                 <img
                   src="dist/images/icons/icon-value-1.png"
@@ -446,7 +516,7 @@
 
               <!-- START : CARD 2 -->
               <div
-                class="flex gap-x-6 items-center bg-white px-5 py-4 w-11/12 rounded-tr-full rounded-br-full"
+                class="flex gap-x-6 items-center bg-white px-5 py-4 w-11/12 md:rounded-tr-full md:rounded-br-full md:rounded-tl-none md:rounded-bl-none rounded-full"
               >
                 <img
                   src="dist/images/icons/icon-value-2.png"
@@ -471,7 +541,7 @@
           <img
             src="dist/images/value-image.png"
             alt="value image people"
-            class="w-[490px] h-[507px]"
+            class="w-[490px] h-[507px] md:block hidden"
           />
         </div>
       </div>
@@ -479,72 +549,31 @@
     <!--  END : VALUE -->
 
     <!-- START : TESTIMONIAL -->
-    <section class="max-w-6xl mx-auto mt-32 relative">
-      <div class="flex items-center">
-        <header class="flex flex-col gap-y-5">
+    <section class="max-w-6xl mx-auto md:p-0 p-10 mt-32 relative">
+      <div class="flex">
+        <header class="flex flex-col md:text-start text-center gap-y-5">
           <h1 class="text-black text-4xl font-bold">
             See What Clients Are Saying
           </h1>
-          <p class="text-gray text-lg w-8/12">
+          <p class="text-gray text-lg md:w-8/12 md:text-start text-center">
             Explore the authentic sentiments and experiences of our clients as
             they share their thoughts and satisfaction.
           </p>
         </header>
-
-        <div class="flex items-center gap-x-5">
-          <svg
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="0.5"
-              y="0.5"
-              width="49"
-              height="49"
-              rx="7.5"
-              stroke="#EE4312"
-            />
-            <path
-              d="M20.5 25L28 32.5L29.05 31.45L22.6 25L29.05 18.55L28 17.5L20.5 25Z"
-              fill="#EE4312"
-            />
-          </svg>
-          <svg
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="0.5"
-              y="0.5"
-              width="49"
-              height="49"
-              rx="7.5"
-              stroke="#EE4312"
-            />
-            <path
-              d="M29.5 25L22 32.5L20.95 31.45L27.4 25L20.95 18.55L22 17.5L29.5 25Z"
-              fill="#EE4312"
-            />
-          </svg>
-        </div>
       </div>
 
       <img
         src="dist/images/ornamen.png"
         alt="ornamen"
-        class="absolute top-[-70px] right-0 w-[450px] h-[58px]"
+        class="absolute md:block hidden top-[-70px] right-0 w-[450px] h-[58px]"
       />
 
-      <div class="flex items-center mt-20 gap-x-12">
+      <div
+        class="flex md:flex-row flex-col md:gap-y-0 gap-y-16 items-center mt-20 gap-x-12"
+      >
         <!-- START : TESTIMONIAL CARD 1 -->
-        <div class="flex flex-col w-fit">
-          <p class="text-lg text-gray px-10 mb-20">
+        <div class="flex flex-col w-fit border border-gray rounded-2xl">
+          <p class="text-lg text-gray p-5 mb-10">
             Working with this consulting firm was a game-changer for our
             business. Their strategic insights transformed our approach and
             boosted our success.
@@ -629,9 +658,9 @@
           </div>
         </div>
         <!-- END : TESTIMONIAL CARD 1 -->
-        <!-- START : TESTIMONIAL CARD 1 -->
-        <div class="flex flex-col w-fit">
-          <p class="text-lg text-gray px-10 mb-20">
+        <!-- START : TESTIMONIAL CARD 2 -->
+        <div class="flex flex-col w-fit border border-gray rounded-2xl">
+          <p class="text-lg text-gray p-5 mb-10">
             Working with this consulting firm was a game-changer for our
             business. Their strategic insights transformed our approach and
             boosted our success.
@@ -715,37 +744,230 @@
             </header>
           </div>
         </div>
-        <!-- END : TESTIMONIAL CARD 1 -->
+        <!-- END : TESTIMONIAL CARD 2 -->
       </div>
     </section>
     <!-- END : TESTIMONIAL -->
 
-    <!-- START : CTA -->
-    <section class="bg-primary mt-24">
-      <div class="flex items-center">
-        <div class="px-20">
-          <header class="flex flex-col gap-y-8">
-            <h1 class="text-white text-4xl font-bold">
-              Let's Collaborate for Mutual Success
-            </h1>
-            <p class="text-md text-silver">
-              Your success story begins with a click, explore our consulting
-              solutions for transformative results.
-            </p>
-            <a
-              href="#"
-              class="bg-secondary-500 text-white font-medium px-5 py-3 rounded-lg w-fit"
-              >Collaborate with Us</a
+    <!-- START : FOOTER -->
+    <footer class="bg-primary p-20 mt-20">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col gap-14">
+          <div
+            class="flex md:flex-row flex-col md:gap-y-0 gap-y-8 justify-between lg:items-end"
+          >
+            <h1
+              class="text-white font-bold text-4xl md:w-2/5 w-full text-center md:text-start leading-snug"
             >
-          </header>
+              Get in Touch on Us for Your Path to Success
+            </h1>
+
+            <div
+              class="flex md:flex-row flex-col gap-y-10 items-center gap-x-10"
+            >
+              <a
+                href="#"
+                class="text-white text-lg font-medium bg-secondary-500 px-5 py-3 rounded-lg"
+                >Book an Appoitment</a
+              >
+
+              <a href="#" class="text-secondary-500 text-3xl md:block hidden"
+                ><i class="fa-brands fa-facebook"></i
+              ></a>
+
+              <a href="#" class="text-secondary-500 text-3xl md:block hidden"
+                ><i class="fa-brands fa-twitter"></i
+              ></a>
+
+              <a href="#" class="text-secondary-500 text-3xl md:block hidden"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+
+              <a href="#" class="text-secondary-500 text-3xl md:block hidden"
+                ><i class="fa-brands fa-pinterest"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-y-6">
+            <ul class="flex flex-wrap gap-y-4 items-center gap-x-10">
+              <li>
+                <a
+                  href="#"
+                  class="text-white text-xl hover:text-secondary-500 transition-all duration-150"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white text-xl hover:text-secondary-500 transition-all duration-150"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white text-xl hover:text-secondary-500 transition-all duration-150"
+                  >Service</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white text-xl hover:text-secondary-500 transition-all duration-150"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white text-xl hover:text-secondary-500 transition-all duration-150"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+
+            <ul class="flex flex-wrap gap-y-4 items-center gap-x-10">
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-secondary-500 transition-all duration-150"
+                  >Method Development</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-secondary-500 transition-all duration-150"
+                  >Quality Assurance</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-secondary-500 transition-all duration-150"
+                  >Human Resources</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-secondary-500 transition-all duration-150"
+                  >Policy Compliance</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-secondary-500 transition-all duration-150"
+                  >Business Strategies</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-white hover:text-secondary-500 transition-all duration-150"
+                  >Management System</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex flex-col gap-y-6">
+            <hr class="h-1 rounded-full bg-secondary-500" />
+
+            <div class="flex md:flex-row flex-col gap-y-8 justify-between items-center">
+              <img
+                src="dist/images/logo.png"
+                alt="Logo"
+                class="w-[178px] h-[30px]"
+              />
+
+              <p class="text-silver text-center">
+                © 2024 Lumina by akmalefs • All Rights Reserved
+              </p>
+            </div>
+          </div>
         </div>
-        <img
-          src="dist/images/cta-image.png"
-          alt="cta image people disscuss"
-          class="w-[804px] h-[374px]"
-        />
       </div>
-    </section>
-    <!-- END : CTA -->
+    </footer>
+    <!-- END : FOOTER -->
+
+    <script>
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#ffffff",
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+          },
+          size: {
+            value: 3,
+            random: true,
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 6,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "repulse",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: true,
+          },
+        },
+        retina_detect: true,
+      });
+    </script>
+
+    <script>
+      // Toggle mobile menu
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden"); // Tampilkan atau sembunyikan menu
+        menuToggle.innerHTML = mobileMenu.classList.contains("hidden")
+          ? "&#9776;"
+          : "&#10005;"; // Ubah ikon menu
+      });
+    </script>
   </body>
 </html>
